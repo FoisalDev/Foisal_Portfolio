@@ -59,23 +59,23 @@ const ExperienceSection = () => {
       company: "Fiverr",
       period: "2019 - 2020",
       description:
-        "Worked on developing and customizing WordPress websites for clients globally.",
+        "Delivered high-quality WordPress websites and custom solutions to international clients, ensuring responsive, optimized, and user-friendly designs.",
     },
     {
       icon: Layers,
-      title: "Junior Frontend Developer",
+      title: "Junior Frontend & UI/UX Developer",
       company: "Sera Programmer",
       period: "2021 - 2023",
       description:
-        "Assisted in building and optimizing user interfaces with a focus on responsive and interactive designs.",
+        "Contributed to frontend development with emphasis on UI/UX design, prototyping, and seamless user interfaces. Enhanced website interactivity, responsiveness, and visual design consistency.",
     },
     {
       icon: Code2,
-      title: "JavaScript Developer",
+      title: "Full Stack / JavaScript & PHP Developer",
       company: "OlovJS (Sera Programmer)",
       period: "2023 - Present",
       description:
-        "Contributed to developing JavaScript libraries and enhancing framework functionalities.",
+        "Developed advanced JavaScript libraries and PHP-based solutions, managed database interactions, and created robust full-stack web applications. Skilled in manual testing, Jira workflow, and delivering professional, client-ready solutions.",
     },
   ];
 
@@ -114,7 +114,8 @@ const ExperienceSection = () => {
               <div className="absolute inset-0 -z-10 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 blur-3xl rounded-full" />
             </div>
             <p className="text-lg md:text-xl text-gray-400 font-medium tracking-wide text-center max-w-2xl">
-              "Transforming ideas into digital reality, one project at a time"
+              "Transforming ideas into digital reality with expertise in
+              frontend, backend, database management, and UI/UX design"
             </p>
           </div>
 

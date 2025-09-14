@@ -34,8 +34,9 @@ const EducationSection = () => {
         "C, C++",
         "Java, Java Swing, JavaFX",
         "HTML, CSS, JavaScript, PHP",
-        "UI/UX Design, Figma, Canva, Adobe",
-        "Blender, Bitrix",
+        "UI/UX Design, Figma, Canva",
+        "Blender, Bitrix , Cisco",
+        "Git, GitHub , Jira",
       ],
       description:
         "Currently pursuing B.Sc in CSE, gaining expertise in programming, web development, UI/UX design, and project management. Strong hands-on experience in database handling and full-stack development.",
