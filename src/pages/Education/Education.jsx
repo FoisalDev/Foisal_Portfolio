@@ -15,24 +15,30 @@ const EducationSection = () => {
 
   const educationData = [
     {
-      degree: "Secondary School Certificate (SSC)",
-      school: "Natore Textile Institute",
-      mascot: "📘",
+      degree: "Higher Secondary Certificate (HSC)",
+      school: "Engineering University School & College",
+      mascot: "🎓",
       year: "2019-2021",
-      achievements: ["GPA: 4.89", "Subject: Science"],
+      achievements: ["GPA: 5.00", "Science Group"],
       skills: ["Mathematics", "Physics", "Chemistry", "Biology"],
       description:
-        "Focused on core science subjects with emphasis on practical laboratory work and scientific research methodologies.",
+        "Completed Higher Secondary education with perfect GPA, focusing on analytical and scientific thinking. Strong foundation in core science subjects.",
     },
     {
-      degree: "Higher Secondary Certificate (HSC)",
-      school: "Dottopara Model Degree College",
-      mascot: "📗",
-      year: "2021-2023",
-      achievements: ["GPA: 4.25", "Subject: Arts"],
-      skills: ["Literature", "Social Studies", "Economics", "History"],
+      degree: "B.Sc in Computer Science & Engineering (CSE)",
+      school: "United International University (UIU)",
+      mascot: "💻",
+      year: "2022 - Present",
+      achievements: ["Active in UIU Computer Club", "Project Coordinator"],
+      skills: [
+        "C, C++",
+        "Java, Java Swing, JavaFX",
+        "HTML, CSS, JavaScript, PHP",
+        "UI/UX Design, Figma, Canva, Adobe",
+        "Blender, Bitrix",
+      ],
       description:
-        "Developed strong analytical and critical thinking skills through comprehensive study of humanities and social sciences.",
+        "Currently pursuing B.Sc in CSE, gaining expertise in programming, web development, UI/UX design, and project management. Strong hands-on experience in database handling and full-stack development.",
     },
   ];
 
@@ -78,8 +84,8 @@ const EducationSection = () => {
             Educational Journey
           </h2>
           <p className="text-gray-300 max-w-2xl mx-auto text-lg">
-            Discover how academic excellence shapes innovative thinking and
-            professional growth.
+            Explore the academic milestones and skills that shape my
+            professional journey.
           </p>
         </motion.div>
 
