@@ -43,14 +43,14 @@ const GridBackground = () => {
 export default function Hero() {
   const words = [
     "Full-Stack Developer & UI/UX Enthusiast",
-    "JavaScript Developer & Creator of Olova.js",
+    "JavaScript Developer",
     "Learning MARN Stack",
     "Linux & GitHub for DevOps Enthusiast",
   ];
 
   const [code] = useState(`
 const profile = {
-    name: 'Nazmul Hossain',
+    name: 'Foisal Arefin',
     title: 'Full-Stack Developer | Cloud Enthusiast | Problem Solver',
     skills: [
         'React', 'NextJS', 'Redux', 'Express',
