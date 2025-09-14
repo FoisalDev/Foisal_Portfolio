@@ -51,16 +51,14 @@ export default function Contact() {
       return;
     }
 
-    // Create a new FormData object to send to Web3Forms API
     const form = new FormData();
-    form.append("access_key", "90f4b8af-e590-42b0-beaf-10b18f66a703"); // Replace with your Web3Forms access key
+    form.append("access_key", "90f4b8af-e590-42b0-beaf-10b18f66a703");
     form.append("name", formData.name);
     form.append("email", formData.email);
     form.append("subject", formData.subject || "New Contact Form Submission");
     form.append("message", formData.message);
 
     try {
-      // Send form data to Web3Forms API
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         body: form,
@@ -69,7 +67,7 @@ export default function Contact() {
       const result = await response.json();
 
       if (response.ok) {
-        setStatus("Message sent successfully!");
+        setStatus("Your message has been successfully sent!");
         setFormData({
           name: "",
           email: "",
@@ -78,19 +76,18 @@ export default function Contact() {
         });
         setErrors({});
       } else {
-        setStatus(result.message || "There was an error sending your message.");
+        setStatus(
+          result.message || "An error occurred while sending your message."
+        );
       }
     } catch (error) {
-      setStatus("An error occurred. Please try again.");
+      setStatus("Unexpected error occurred. Please try again later.");
       console.error("Error:", error);
     }
   };
 
   return (
-    <main
-      className="pt-20 lg:pt-[0rem] bg-[#04081A]
- text-white min-h-screen"
-    >
+    <main className="pt-20 lg:pt-0 bg-[#04081A] text-white min-h-screen">
       <section className="hero min-h-screen flex items-center relative px-4 sm:px-6 lg:px-8">
         <div className="container mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -98,10 +95,12 @@ export default function Contact() {
             <div className="space-y-8">
               <div>
                 <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-                  Get in Touch
+                  Let’s Connect
                 </h2>
                 <p className="text-gray-300 text-lg">
-                  Have a question or want to work together? Drop us a message!
+                  I’m open for collaboration, freelance projects, or full-time
+                  opportunities. Reach out and let's discuss how we can work
+                  together to build impactful solutions.
                 </p>
               </div>
 
@@ -112,7 +111,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3 className="font-semibold">Email</h3>
-                    <p className="text-gray-400">olovajs@gmail.com</p>
+                    <p className="text-gray-400">foisalarefin0987@gmail.com</p>
                   </div>
                 </div>
 
@@ -122,7 +121,21 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3 className="font-semibold">Location</h3>
-                    <p className="text-gray-400">Laxmipure, Natore 6400</p>
+                    <p className="text-gray-400">
+                      Azimpur Officer’s Quatar, Dhaka-1205, Bangladesh
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-center space-x-4">
+                  <div className="bg-blue-500/10 p-3 rounded-lg">
+                    <Phone className="w-6 h-6 text-blue-400" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold">Phone</h3>
+                    <p className="text-gray-400">
+                      +880 1919-933481 / +880 1531-780118
+                    </p>
                   </div>
                 </div>
               </div>
@@ -216,7 +229,6 @@ export default function Contact() {
                 </button>
               </form>
 
-              {/* Status Message */}
               {status && (
                 <div
                   className={`mt-4 text-center ${
