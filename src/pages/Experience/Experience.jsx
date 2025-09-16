@@ -28,8 +28,10 @@ const ExperienceCard = ({
           {title}
         </h3>
         <div className="flex justify-between items-center text-gray-300">
-          <span className="font-semibold text-blue-400">{company}</span>
-          <span className="text-sm font-mono bg-blue-500/10 px-3 py-1 rounded-full">
+          <span className="font-semibold text-blue-400 truncate max-w-[70%]">
+            {company}
+          </span>
+          <span className="text-sm font-mono bg-blue-500/10 px-3 py-1 rounded-full whitespace-nowrap flex-shrink-0">
             {period}
           </span>
         </div>
@@ -64,18 +66,18 @@ const ExperienceSection = () => {
     {
       icon: Layers,
       title: "Junior Frontend & UI/UX Developer",
-      company: "Sera Programmer",
+      company: "Freelance Projects / Personal Work",
       period: "2021 - 2023",
       description:
-        "Contributed to frontend development with emphasis on UI/UX design, prototyping, and seamless user interfaces. Enhanced website interactivity, responsiveness, and visual design consistency.",
+        "Worked on frontend development with emphasis on UI/UX design, prototyping, and seamless user interfaces. Enhanced website interactivity, responsiveness, and visual design consistency.",
     },
     {
       icon: Code2,
       title: "Full Stack / JavaScript & PHP Developer",
-      company: "OlovJS (Sera Programmer)",
+      company: "AgroMate & Personal Projects",
       period: "2023 - Present",
       description:
-        "Developed advanced JavaScript libraries and PHP-based solutions, managed database interactions, and created robust full-stack web applications. Skilled in manual testing, Jira workflow, and delivering professional, client-ready solutions.",
+        "Developed advanced JavaScript libraries, full-stack web applications, and PHP-based solutions. Managed database interactions, implemented AI-assisted features, and delivered professional, client-ready web solutions.",
     },
   ];
 
