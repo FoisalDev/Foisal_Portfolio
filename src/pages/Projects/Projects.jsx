@@ -32,7 +32,7 @@ const projects = [
     link: "/projects/portfolio.jpg",
     color: "#ed649e",
     githubLink: "https://github.com/FoisalDev/Foisal_Portfolio.git",
-    liveLink: "https://foisaldev.vercel.app",
+    liveLink: "",
   },
   {
     title: "Bank Management System",
