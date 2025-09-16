@@ -68,7 +68,7 @@ export default function About() {
                         className="h-5 w-fit"
                         src="/OwnLogo.png" // public ফোল্ডার থেকে লোড হচ্ছে
                         alt="Foisal Logo"
-                        height="40"
+                        height="100"
                         width="auto"
                       />
 
