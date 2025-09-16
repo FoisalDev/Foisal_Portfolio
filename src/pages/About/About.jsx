@@ -66,11 +66,12 @@ export default function About() {
                     <div className="flex items-center gap-2">
                       <img
                         className="h-5 w-fit"
-                        src={OlovaLogo}
-                        alt="Olova Logo"
-                        height="20"
+                        src="/OwnLogo.png" // public ফোল্ডার থেকে লোড হচ্ছে
+                        alt="Foisal Logo"
+                        height="40"
                         width="auto"
                       />
+
                       <span className="text-white">Portfolio & Projects</span>
                     </div>
                   </div>
