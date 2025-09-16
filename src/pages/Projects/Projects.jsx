@@ -57,7 +57,7 @@ const projects = [
   {
     title: "Prototype Projects",
     description:
-      "Prototypes built with Figma showcasing advanced layouts and interactions (4 screens).",
+      "Prototypes built with Figma showcasing advanced layouts and interactions.",
     src: "/projects/prototype-1.jpg",
     link: "/projects/prototype-1.jpg",
     color: "#9b59b6",
