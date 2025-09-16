@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Send, Phone, MapPin, Mail } from "lucide-react";
+import { FaFacebookF, FaGithub, FaLinkedinIn } from "react-icons/fa";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -86,6 +87,27 @@ export default function Contact() {
     }
   };
 
+  const socialLinks = [
+    {
+      name: "Facebook",
+      icon: <FaFacebookF />,
+      link: "https://www.facebook.com/dev.foisal/",
+      color: "bg-blue-600",
+    },
+    {
+      name: "GitHub",
+      icon: <FaGithub />,
+      link: "https://github.com/FoisalDev",
+      color: "bg-gray-800",
+    },
+    {
+      name: "LinkedIn",
+      icon: <FaLinkedinIn />,
+      link: "https://www.linkedin.com/in/foisal-arefin/",
+      color: "bg-blue-700",
+    },
+  ];
+
   return (
     <main className="pt-20 lg:pt-0 bg-[#04081A] text-white min-h-screen">
       <section className="hero min-h-screen flex items-center relative px-4 sm:px-6 lg:px-8">
@@ -138,6 +160,24 @@ export default function Contact() {
                     </p>
                   </div>
                 </div>
+
+                {/* Social Links */}
+                <div className="flex items-center space-x-4 mt-4">
+                  {socialLinks.map((social, index) => (
+                    <a
+                      key={index}
+                      href={social.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`w-12 h-12 md:w-14 md:h-14 flex items-center justify-center rounded-full ${social.color} hover:scale-110 transition-transform duration-300 shadow-lg`}
+                      title={social.name}
+                    >
+                      <span className="text-white text-xl md:text-2xl">
+                        {social.icon}
+                      </span>
+                    </a>
+                  ))}
+                </div>
               </div>
             </div>
 
@@ -145,79 +185,50 @@ export default function Contact() {
             <div className="backdrop-blur-lg bg-white/5 p-8 rounded-2xl shadow-xl">
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 gap-6">
-                  <div>
-                    <input
-                      type="text"
-                      placeholder="Your Name"
-                      className={`w-full px-4 py-3 rounded-lg bg-white/5 border ${
-                        errors.name ? "border-red-500" : "border-gray-700"
-                      } focus:border-blue-500 focus:outline-none transition-colors`}
-                      value={formData.name}
-                      onChange={(e) =>
-                        setFormData({ ...formData, name: e.target.value })
-                      }
-                    />
-                    {errors.name && (
-                      <p className="text-red-500 text-sm mt-1">{errors.name}</p>
-                    )}
-                  </div>
-
-                  <div>
-                    <input
-                      type="email"
-                      placeholder="Your Email"
-                      className={`w-full px-4 py-3 rounded-lg bg-white/5 border ${
-                        errors.email ? "border-red-500" : "border-gray-700"
-                      } focus:border-blue-500 focus:outline-none transition-colors`}
-                      value={formData.email}
-                      onChange={(e) =>
-                        setFormData({ ...formData, email: e.target.value })
-                      }
-                    />
-                    {errors.email && (
-                      <p className="text-red-500 text-sm mt-1">
-                        {errors.email}
-                      </p>
-                    )}
-                  </div>
-
-                  <div>
-                    <input
-                      type="text"
-                      placeholder="Subject"
-                      className={`w-full px-4 py-3 rounded-lg bg-white/5 border ${
-                        errors.subject ? "border-red-500" : "border-gray-700"
-                      } focus:border-blue-500 focus:outline-none transition-colors`}
-                      value={formData.subject}
-                      onChange={(e) =>
-                        setFormData({ ...formData, subject: e.target.value })
-                      }
-                    />
-                    {errors.subject && (
-                      <p className="text-red-500 text-sm mt-1">
-                        {errors.subject}
-                      </p>
-                    )}
-                  </div>
-
-                  <div>
-                    <textarea
-                      placeholder="Your Message"
-                      rows="4"
-                      className={`w-full px-4 py-3 rounded-lg bg-white/5 border ${
-                        errors.message ? "border-red-500" : "border-gray-700"
-                      } focus:border-blue-500 focus:outline-none transition-colors resize-none`}
-                      value={formData.message}
-                      onChange={(e) =>
-                        setFormData({ ...formData, message: e.target.value })
-                      }
-                    ></textarea>
-                    {errors.message && (
-                      <p className="text-red-500 text-sm mt-1">
-                        {errors.message}
-                      </p>
-                    )}
-                  </div>
+                  <input
+                    type="text"
+                    placeholder="Your Name"
+                    className={`w-full px-4 py-3 rounded-lg bg-white/5 border ${
+                      errors.name ? "border-red-500" : "border-gray-700"
+                    } focus:border-blue-500 focus:outline-none transition-colors`}
+                    value={formData.name}
+                    onChange={(e) =>
+                      setFormData({ ...formData, name: e.target.value })
+                    }
+                  />
+                  <input
+                    type="email"
+                    placeholder="Your Email"
+                    className={`w-full px-4 py-3 rounded-lg bg-white/5 border ${
+                      errors.email ? "border-red-500" : "border-gray-700"
+                    } focus:border-blue-500 focus:outline-none transition-colors`}
+                    value={formData.email}
+                    onChange={(e) =>
+                      setFormData({ ...formData, email: e.target.value })
+                    }
+                  />
+                  <input
+                    type="text"
+                    placeholder="Subject"
+                    className={`w-full px-4 py-3 rounded-lg bg-white/5 border ${
+                      errors.subject ? "border-red-500" : "border-gray-700"
+                    } focus:border-blue-500 focus:outline-none transition-colors`}
+                    value={formData.subject}
+                    onChange={(e) =>
+                      setFormData({ ...formData, subject: e.target.value })
+                    }
+                  />
+                  <textarea
+                    placeholder="Your Message"
+                    rows="4"
+                    className={`w-full px-4 py-3 rounded-lg bg-white/5 border ${
+                      errors.message ? "border-red-500" : "border-gray-700"
+                    } focus:border-blue-500 focus:outline-none transition-colors resize-none`}
+                    value={formData.message}
+                    onChange={(e) =>
+                      setFormData({ ...formData, message: e.target.value })
+                    }
+                  ></textarea>
                 </div>
 
                 <button
