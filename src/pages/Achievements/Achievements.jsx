@@ -9,6 +9,7 @@ import meImg from "../../assets/achievements/me.jpg";
 // Online certificates
 import htmlCert from "../../assets/achievements/html-cert.jpg";
 import cssCert from "../../assets/achievements/css-cert.jpg";
+import javaCert from "../../assets/achievements/java-cert.jpg";
 
 // Animation variants
 const fadeUp = {
@@ -19,7 +20,6 @@ const fadeUp = {
 export default function Achievements() {
   return (
     <div className="pt-32 px-6 min-h-screen text-white bg-gradient-to-b from-black via-gray-900 to-black">
-      
       {/* ================= ACADEMIC ACHIEVEMENT ================= */}
       <motion.section
         variants={fadeUp}
@@ -34,7 +34,6 @@ export default function Achievements() {
 
         {/* Trophy + Text */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          
           {/* Trophy */}
           <motion.img
             src={trophyImg}
@@ -62,7 +61,8 @@ export default function Achievements() {
                 8th Runner-Up position among 105 teams
               </span>{" "}
               at the UIU CSE SAD Lab Project Showcase.
-              <br /><br />
+              <br />
+              <br />
               This achievement demonstrates strong teamwork, system analysis
               expertise, and real-world problem-solving — motivating me to push
               further and aim even higher in the next chapter.
@@ -72,7 +72,6 @@ export default function Achievements() {
 
         {/* ================= SUPPORTING IMAGES (PRO LAYOUT) ================= */}
         <div className="mt-20 space-y-12">
-
           {/* Certificate + Team */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             <motion.img
@@ -130,6 +129,11 @@ export default function Achievements() {
             {
               img: cssCert,
               title: "Introduction to CSS",
+              org: "SoloLearn • 2025",
+            },
+            {
+              img: javaCert,
+              title: "Introduction to JAVA",
               org: "SoloLearn • 2025",
             },
           ].map((cert, i) => (

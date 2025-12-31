@@ -1,306 +1,181 @@
-import { ReactLenis } from "lenis/react";
-import { useTransform, motion, useScroll } from "framer-motion";
-import { useRef, useEffect } from "react";
+import { motion } from "framer-motion";
 import PropTypes from "prop-types";
+
+/* ================= PROJECT DATA ================= */
 
 const projects = [
   {
     title: "LawShield",
+    tag: "Backend • Database",
     description:
-      "A law-related management system built with MySQL and PHP for secure record handling.",
-    src: "/projects/lawshield.jpg",
-    link: "/projects/lawshield.jpg",
-    color: "#5196fd",
-    githubLink: "https://github.com/FoisalDev/LAW_SHEILD.git",
-    liveLink: "",
+      "A law-focused management system built with PHP and MySQL, designed for secure legal record handling and structured data workflows.",
+    image: "/projects/lawshield.jpg",
+    github: "https://github.com/FoisalDev/LAW_SHEILD.git",
+    live: "",
   },
   {
     title: "JobGate",
+    tag: "Full Stack",
     description:
-      "Job recruitment software with candidate filtering and built-in testing.",
-    src: "/projects/jobgate.jpg",
-    link: "/projects/jobgate.jpg",
-    color: "#8f89ff",
-    githubLink: "https://github.com/FoisalDev/JobGate.git",
-    liveLink: "",
+      "A recruitment platform featuring candidate filtering, structured assessments, and role-based data access.",
+    image: "/projects/jobgate.jpg",
+    github: "https://github.com/FoisalDev/JobGate.git",
+    live: "",
   },
   {
-    title: "Personal Portfolio Website",
+    title: "Personal Portfolio",
+    tag: "Frontend",
     description:
-      "My personal portfolio website built with React & Tailwind CSS.",
-    src: "/projects/portfolio.jpg",
-    link: "/projects/portfolio.jpg",
-    color: "#ed649e",
-    githubLink: "https://github.com/FoisalDev/Foisal_Portfolio.git",
-    liveLink: "",
+      "My personal portfolio website built with React and Tailwind CSS, focusing on performance, accessibility, and clean UI.",
+    image: "/projects/portfolio.jpg",
+    github: "https://github.com/FoisalDev/Foisal_Portfolio.git",
+    live: "",
   },
   {
     title: "Bank Management System",
+    tag: "Backend System",
     description:
-      "Bank account management system with transactions and secure authentication.",
-    src: "/projects/bankmanagement.jpg",
-    link: "/projects/bankmanagement.jpg",
-    color: "#00c6a9",
-    githubLink: "https://github.com/FoisalDev/BankManagement.git",
-    liveLink: "",
+      "A banking system supporting authentication, account management, and transaction workflows with data validation.",
+    image: "/projects/bankmanagement.jpg",
+    github: "https://github.com/FoisalDev/BankManagement.git",
+    live: "",
   },
   {
-    title: "UI/UX Designs",
+    title: "UI / UX Design Works",
+    tag: "Design",
     description:
-      "Collection of UI/UX design works with multiple creative layouts.",
-    src: "/projects/uiux-1.jpg",
-    link: "/projects/uiux-1.jpg",
-    color: "#f39c12",
-    githubLink: "https://github.com/FoisalDev/ui-ux.git",
-    liveLink: "",
+      "A collection of UI/UX design explorations created in Figma, focusing on layout systems and interaction clarity.",
+    image: "/projects/uiux-1.jpg",
+    github: "https://github.com/FoisalDev/ui-ux.git",
+    live: "",
   },
   {
     title: "Prototype Projects",
+    tag: "Prototyping",
     description:
-      "Prototypes built with Figma showcasing advanced layouts and interactions.",
-    src: "/projects/prototype-1.jpg",
-    link: "/projects/prototype-1.jpg",
-    color: "#9b59b6",
-    githubLink: "https://github.com/FoisalDev/Prototype.git",
-    liveLink: "",
+      "Interactive prototypes demonstrating user flows, wireframes, and visual hierarchy using modern design principles.",
+    image: "/projects/prototype-1.jpg",
+    github: "https://github.com/FoisalDev/Prototype.git",
+    live: "",
   },
 ];
 
+/* ================= ANIMATION ================= */
+
+const gridVariants = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.1 },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: "easeOut" },
+  },
+};
+
+/* ================= PAGE ================= */
+
 export default function Projects() {
-  const container = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: container,
-    offset: ["start start", "end end"],
-  });
-
-  useEffect(() => {
-    const style = document.createElement("style");
-    style.textContent = `
-      @media screen and (width: 1366px) and (height: 768px),
-             screen and (width: 1367px) and (height: 768px),
-             screen and (width: 1368px) and (height: 769px) {
-        .project-card {
-          scale: 0.85;
-          margin-top: -5vh;
-        }
-        .project-container {
-          height: 90vh;
-        }
-      }
-    `;
-    document.head.appendChild(style);
-
-    const checkResolution = () => {
-      const isTargetResolution =
-        window.innerWidth >= 1360 &&
-        window.innerWidth <= 1370 &&
-        window.innerHeight >= 760 &&
-        window.innerHeight <= 775;
-
-      if (isTargetResolution) {
-        document.documentElement.style.setProperty("--project-scale", "0.85");
-        document.documentElement.style.setProperty("--project-margin", "-5vh");
-      } else {
-        document.documentElement.style.setProperty("--project-scale", "1");
-        document.documentElement.style.setProperty("--project-margin", "0");
-      }
-    };
-
-    checkResolution();
-    window.addEventListener("resize", checkResolution);
-
-    return () => {
-      document.head.removeChild(style);
-      window.removeEventListener("resize", checkResolution);
-    };
-  }, []);
-
   return (
-    <ReactLenis root>
-      <main className="bg-black" ref={container}>
-        <section className="text-white w-full bg-slate-950">
-          {projects.map((project, i) => {
-            const targetScale = 1 - (projects.length - i) * 0.05;
-            return (
-              <Card
-                key={`p_${i}`}
-                i={i}
-                url={project.link}
-                title={project.title}
-                color={project.color}
-                description={project.description}
-                progress={scrollYProgress}
-                range={[i * 0.25, 1]}
-                targetScale={targetScale}
-                githubLink={project.githubLink}
-                liveLink={project.liveLink}
-              />
-            );
-          })}
-        </section>
-      </main>
-    </ReactLenis>
-  );
-}
+    <section className="min-h-screen bg-black text-white pt-32 pb-28 px-6">
+      {/* Header */}
+      <div className="max-w-6xl mx-auto mb-24 text-center">
+        <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
+          Selected Projects
+        </h1>
+        <p className="mt-6 text-gray-400 max-w-2xl mx-auto text-lg">
+          A curated selection of academic, personal, and professional projects
+          demonstrating my experience in system design, full-stack development,
+          and UI/UX.
+        </p>
+      </div>
 
-function Card({
-  i,
-  title,
-  description,
-  url,
-  color,
-  progress,
-  range,
-  targetScale,
-  githubLink,
-  liveLink,
-}) {
-  const container = useRef(null);
-  const scale = useTransform(progress, range, [1, targetScale]);
-
-  return (
-    <div
-      ref={container}
-      className="h-screen flex items-center justify-center sticky top-0 project-container"
-    >
+      {/* Projects Grid */}
       <motion.div
-        style={{
-          scale,
-          top: `calc(-5vh + ${i * 25}px)`,
-          transform: `scale(var(--project-scale, 1))`,
-          marginTop: "var(--project-margin, 0)",
-        }}
-        className="relative -top-[25%] h-auto w-[90%] md:w-[85%] lg:w-[75%] xl:w-[65%] origin-top project-card"
-        whileHover={{
-          y: -8,
-          transition: { duration: 0.3 },
-        }}
+        variants={gridVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-80px" }}
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 max-w-7xl mx-auto"
       >
-        <div className="w-full flex flex-col md:flex-row bg-zinc-900 rounded-2xl overflow-hidden shadow-xl">
-          <div className="w-full md:w-[55%] h-[250px] md:h-[400px] lg:h-[450px] relative overflow-hidden">
-            <motion.img
-              src={url}
-              alt={title}
-              className="w-full h-full object-cover"
-              initial={{ scale: 1 }}
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.4 }}
-            />
-            <motion.div
-              className="absolute inset-0"
-              style={{ backgroundColor: color, mixBlendMode: "overlay" }}
-              initial={{ opacity: 0 }}
-              whileHover={{ opacity: 0.3 }}
-              transition={{ duration: 0.3 }}
-            />
-            <div className="absolute top-4 left-4 md:top-6 md:left-6 bg-black/50 backdrop-blur-md text-white px-3 py-1 md:px-4 md:py-2 rounded-full text-xs md:text-sm font-medium">
-              Project {i + 1}
-            </div>
-          </div>
-
-          <div className="w-full md:w-[45%] p-6 md:p-8 lg:p-10 flex flex-col justify-between">
-            <div>
-              <div className="flex items-center gap-3 mb-4 md:mb-6">
-                <div
-                  className="w-2 h-2 md:w-3 md:h-3 rounded-full"
-                  style={{ backgroundColor: color }}
-                />
-                <div className="h-[1px] w-12 md:w-20 bg-gray-600" />
-              </div>
-
-              <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-white mb-2 md:mb-4">
-                {title}
-              </h2>
-              <p className="text-sm md:text-base text-gray-400 leading-relaxed line-clamp-3 md:line-clamp-none max-w-md">
-                {description}
-              </p>
-            </div>
-
-            <div className="mt-4 md:mt-auto pt-4">
-              <div className="w-full h-[1px] bg-gray-800 mb-4 md:mb-6" />
-              <div className="flex items-center gap-4">
-                {githubLink && (
-                  <motion.a
-                    href={githubLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group flex items-center gap-2"
-                    whileHover={{ y: -3 }}
-                    transition={{ type: "spring", stiffness: 400 }}
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="22"
-                      height="22"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke={color}
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                    </svg>
-                    <span
-                      className="text-xs md:text-sm font-medium"
-                      style={{ color }}
-                    >
-                      Code
-                    </span>
-                  </motion.a>
-                )}
-
-                {/* Live Link (show only if available) */}
-                {liveLink && (
-                  <motion.a
-                    href={liveLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group flex items-center gap-2"
-                    whileHover={{ y: -3 }}
-                    transition={{ type: "spring", stiffness: 400 }}
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="22"
-                      height="22"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke={color}
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <circle cx="12" cy="12" r="10"></circle>
-                      <line x1="2" y1="12" x2="22" y2="12"></line>
-                      <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-                    </svg>
-                    <span
-                      className="text-xs md:text-sm font-medium"
-                      style={{ color }}
-                    >
-                      Live
-                    </span>
-                  </motion.a>
-                )}
-              </div>
-            </div>
-          </div>
-        </div>
+        {projects.map((project, index) => (
+          <ProjectCard key={index} project={project} />
+        ))}
       </motion.div>
-    </div>
+    </section>
   );
 }
 
-Card.propTypes = {
-  i: PropTypes.number.isRequired,
-  title: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  url: PropTypes.string.isRequired,
-  color: PropTypes.string.isRequired,
-  progress: PropTypes.object.isRequired,
-  range: PropTypes.array.isRequired,
-  targetScale: PropTypes.number.isRequired,
-  githubLink: PropTypes.string.isRequired,
-  liveLink: PropTypes.string.isRequired,
+/* ================= CARD ================= */
+
+function ProjectCard({ project }) {
+  return (
+    <motion.article
+      variants={cardVariants}
+      whileHover={{ y: -6 }}
+      className="group bg-zinc-900/90 rounded-2xl overflow-hidden border border-white/10 shadow-lg transition-all"
+    >
+      {/* Image */}
+      <div className="relative h-56 overflow-hidden">
+        <img
+          src={project.image}
+          alt={project.title}
+          loading="lazy"
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+        />
+        <div className="absolute inset-0 bg-black/20" />
+      </div>
+
+      {/* Content */}
+      <div className="p-6 flex flex-col h-full">
+        <span className="text-xs uppercase tracking-wider text-gray-400 mb-2">
+          {project.tag}
+        </span>
+
+        <h3 className="text-xl font-semibold mb-3">
+          {project.title}
+        </h3>
+
+        <p className="text-gray-400 text-sm leading-relaxed mb-6">
+          {project.description}
+        </p>
+
+        {/* Actions */}
+        <div className="mt-auto flex items-center gap-5 text-sm font-medium">
+          {project.github && (
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-400 hover:text-blue-300 transition-colors"
+            >
+              View Code →
+            </a>
+          )}
+
+          {project.live && (
+            <a
+              href={project.live}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-400 hover:text-blue-300 transition-colors"
+            >
+              Live Demo →
+            </a>
+          )}
+        </div>
+      </div>
+    </motion.article>
+  );
+}
+
+/* ================= PROPS ================= */
+
+ProjectCard.propTypes = {
+  project: PropTypes.object.isRequired,
 };
