@@ -36,7 +36,8 @@ export default function Contact() {
   const validateForm = () => {
     let temp = {};
     if (!formData.name) temp.name = true;
-    if (!formData.email || !/\S+@\S+\.\S+/.test(formData.email)) temp.email = true;
+    if (!formData.email || !/\S+@\S+\.\S+/.test(formData.email))
+      temp.email = true;
     if (!formData.subject) temp.subject = true;
     if (!formData.message) temp.message = true;
     setErrors(temp);
@@ -91,7 +92,6 @@ export default function Contact() {
 
   return (
     <section className="min-h-screen relative overflow-hidden pt-32 pb-28 px-6 bg-[#04081A] text-white">
-      
       {/* Grid background */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(50,50,70,0.15)_1px,transparent_1px),linear-gradient(90deg,rgba(50,50,70,0.15)_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,#000_70%,transparent_100%)]" />
 
@@ -111,8 +111,8 @@ export default function Contact() {
           Let’s Connect
         </h1>
         <p className="mt-6 text-gray-400 max-w-2xl mx-auto text-lg">
-          Open to collaboration, freelance projects, and full-time opportunities.
-          Let’s build something impactful together.
+          Open to collaboration, freelance projects, and full-time
+          opportunities. Let’s build something impactful together.
         </p>
       </motion.div>
 
@@ -135,7 +135,7 @@ export default function Contact() {
             {
               icon: <MapPin className="w-5 h-5 text-cyan-400" />,
               label: "Location",
-              value: "Dhaka, Bangladesh",
+              value: "Azimpur Officers Quater,Dhaka-1205,Bangladesh",
             },
             {
               icon: <Phone className="w-5 h-5 text-cyan-400" />,
@@ -144,9 +144,7 @@ export default function Contact() {
             },
           ].map((item, i) => (
             <div key={i} className="flex items-start gap-4">
-              <div className="p-3 bg-cyan-500/10 rounded-lg">
-                {item.icon}
-              </div>
+              <div className="p-3 bg-cyan-500/10 rounded-lg">{item.icon}</div>
               <div>
                 <h3 className="font-semibold">{item.label}</h3>
                 <p className="text-gray-400">{item.value}</p>

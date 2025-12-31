@@ -24,12 +24,12 @@ const projects = [
     live: "",
   },
   {
-    title: "Personal Portfolio",
-    tag: "Frontend",
+    title: "LawShield",
+    tag: "Prototype",
     description:
-      "Personal portfolio built with React and Tailwind CSS, focused on performance and clean UI.",
-    image: "/projects/portfolio.jpg",
-    github: "https://github.com/FoisalDev/Foisal_Portfolio.git",
+      "A law-focused management system ,designed for secure legal record handling.",
+    image: "/projects/law_prototype.jpg",
+    github: "https://github.com/FoisalDev/LAW_SHEILD.git",
     live: "",
   },
   {
@@ -59,6 +59,15 @@ const projects = [
     github: "https://github.com/FoisalDev/Prototype.git",
     live: "",
   },
+  {
+    title: "Personal Portfolio",
+    tag: "Frontend",
+    description:
+      "Personal portfolio built with React and Tailwind CSS, focused on performance and clean UI.",
+    image: "/projects/portfolio.jpg",
+    github: "https://github.com/FoisalDev/Foisal_Portfolio.git",
+    live: "",
+  },
 ];
 
 /* ================= ANIMATION ================= */
@@ -82,7 +91,6 @@ const cardVariants = {
 export default function Projects() {
   return (
     <section className="min-h-screen relative overflow-hidden pt-32 pb-28 px-6 bg-[#04081A] text-white">
-      
       {/* Grid background (same as Experience) */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(50,50,70,0.15)_1px,transparent_1px),linear-gradient(90deg,rgba(50,50,70,0.15)_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,#000_70%,transparent_100%)]" />
 
@@ -158,9 +166,7 @@ function ProjectCard({ project }) {
           {project.tag}
         </span>
 
-        <h3 className="text-xl font-semibold mb-3">
-          {project.title}
-        </h3>
+        <h3 className="text-xl font-semibold mb-3">{project.title}</h3>
 
         <p className="text-gray-400 text-sm leading-relaxed mb-6">
           {project.description}
