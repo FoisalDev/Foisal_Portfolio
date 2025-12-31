@@ -1,168 +1,158 @@
-import React, { useState } from "react";
-import EducationLoader from "@/components/ui/EducationLoader";
+import React from "react";
+import { motion } from "framer-motion";
 import {
-  Star,
-  Award,
   Calendar,
   BookOpen,
-  GraduationCap,
+  Award,
   Trophy,
 } from "lucide-react";
-import { motion } from "framer-motion";
+
+/* ================= DATA ================= */
+
+const educationData = [
+  {
+    degree: "Higher Secondary Certificate (HSC)",
+    school: "Engineering University School & College",
+    year: "2019 – 2021",
+    achievements: ["GPA: 5.00", "Science Group"],
+    skills: ["Mathematics", "Physics", "Chemistry", "Biology"],
+    description:
+      "Completed Higher Secondary education with a perfect GPA, developing strong analytical thinking and a solid foundation in core science subjects.",
+  },
+  {
+    degree: "B.Sc in Computer Science & Engineering (CSE)",
+    school: "United International University (UIU)",
+    year: "2022 – Present",
+    achievements: ["Active in UIU Computer Club", "Project Coordinator"],
+    skills: [
+      "C, C++",
+      "Java, Java Swing, JavaFX",
+      "HTML, CSS, JavaScript, PHP",
+      "UI/UX Design (Figma, Canva)",
+      "Git, GitHub, Jira",
+      "Database & System Design",
+    ],
+    description:
+      "Currently pursuing a B.Sc in CSE, gaining hands-on experience in programming, full-stack development, UI/UX design, and collaborative project work.",
+  },
+];
+
+/* ================= ANIMATION ================= */
+
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.18 },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" },
+  },
+};
+
+/* ================= COMPONENT ================= */
 
 const EducationSection = () => {
-  const [hoveredIndex, setHoveredIndex] = useState(null);
-
-  const educationData = [
-    {
-      degree: "Higher Secondary Certificate (HSC)",
-      school: "Engineering University School & College",
-      mascot: "🎓",
-      year: "2019-2021",
-      achievements: ["GPA: 5.00", "Science Group"],
-      skills: ["Mathematics", "Physics", "Chemistry", "Biology"],
-      description:
-        "Completed Higher Secondary education with perfect GPA, focusing on analytical and scientific thinking. Strong foundation in core science subjects.",
-    },
-    {
-      degree: "B.Sc in Computer Science & Engineering (CSE)",
-      school: "United International University (UIU)",
-      mascot: "💻",
-      year: "2022 - Present",
-      achievements: ["Active in UIU Computer Club", "Project Coordinator"],
-      skills: [
-        "C, C++",
-        "Java, Java Swing, JavaFX",
-        "HTML, CSS, JavaScript, PHP",
-        "UI/UX Design, Figma, Canva",
-        "Blender, Bitrix , Cisco",
-        "Git, GitHub , Jira",
-      ],
-      description:
-        "Currently pursuing B.Sc in CSE, gaining expertise in programming, web development, UI/UX design, and project management. Strong hands-on experience in database handling and full-stack development.",
-    },
-  ];
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  };
-
-  const cardVariants = {
-    hidden: { y: 50, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut",
-      },
-    },
-  };
-
   return (
-    <section className="min-h-screen relative overflow-hidden py-40 bg-[#04081A]">
-      {/* Grid Background */}
-      <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-grid-white/[0.05] bg-[length:50px_50px]" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#04081A] via-transparent to-[#04081A]" />
-        <div className="absolute inset-0 border border-white/[0.05] grid grid-cols-2 md:grid-cols-4" />
-      </div>
+    <section className="min-h-screen relative overflow-hidden pt-32 pb-28 px-6 bg-[#04081A] text-white">
+      
+      {/* Grid background (consistent with Experience & Projects) */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(50,50,70,0.15)_1px,transparent_1px),linear-gradient(90deg,rgba(50,50,70,0.15)_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,#000_70%,transparent_100%)]" />
 
-      <div className="max-w-6xl mx-auto px-4 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-teal-400 to-blue-500 bg-clip-text text-transparent mb-6">
-            Educational Journey
-          </h2>
-          <p className="text-gray-300 max-w-2xl mx-auto text-lg">
-            Explore the academic milestones and skills that shape my
-            professional journey.
-          </p>
-        </motion.div>
+      {/* Glow blobs */}
+      <div className="absolute top-24 left-20 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl animate-pulse" />
+      <div className="absolute bottom-24 right-20 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
 
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="grid grid-cols-1 md:grid-cols-2 gap-8"
-        >
-          {educationData.map((edu, index) => (
-            <motion.div
-              key={index}
-              variants={cardVariants}
-              className={`relative border rounded-xl p-8 transition-all duration-300 bg-gray-900/50 backdrop-blur-sm ${
-                hoveredIndex === index
-                  ? "border-teal-500 scale-[1.02]"
-                  : "border-blue-400/20"
-              }`}
-              onMouseEnter={() => setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
-            >
-              <div className="space-y-6">
-                <div className="space-y-2">
-                  <div className="flex items-center gap-3">
-                    <span className="text-3xl">{edu.mascot}</span>
-                    <h3 className="text-2xl font-bold text-white">
-                      {edu.degree}
-                    </h3>
-                  </div>
-                  <p className="text-lg text-gray-300 flex items-center gap-2">
-                    <BookOpen className="w-5 h-5 text-teal-500" />
-                    {edu.school}
-                  </p>
-                  <p className="text-gray-400 flex items-center gap-2">
-                    <Calendar className="w-4 h-4" />
-                    {edu.year}
-                  </p>
-                </div>
+      {/* Header */}
+      <motion.div
+        initial={{ opacity: 0, y: -30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7, ease: "easeOut" }}
+        className="relative max-w-6xl mx-auto mb-24 text-center"
+      >
+        <h2 className="text-4xl md:text-6xl font-black bg-gradient-to-r from-teal-400 to-blue-500 bg-clip-text text-transparent">
+          Educational Journey
+        </h2>
+        <p className="mt-6 text-gray-400 max-w-2xl mx-auto text-lg">
+          Academic milestones and skill development that form the foundation of
+          my professional growth.
+        </p>
+      </motion.div>
 
-                <p className="text-gray-300 text-sm italic border-l-2 border-teal-500 pl-3">
-                  {edu.description}
-                </p>
+      {/* Education Cards */}
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-80px" }}
+        className="relative grid grid-cols-1 md:grid-cols-2 gap-12 max-w-6xl mx-auto"
+      >
+        {educationData.map((edu, index) => (
+          <motion.article
+            key={index}
+            variants={cardVariants}
+            whileHover={{ y: -6 }}
+            className="bg-gray-900/80 rounded-2xl p-8 border border-white/10 shadow-xl backdrop-blur-xl transition-all"
+          >
+            {/* Header */}
+            <div className="mb-6 space-y-2">
+              <h3 className="text-2xl font-semibold">
+                {edu.degree}
+              </h3>
+              <p className="flex items-center gap-2 text-gray-300">
+                <BookOpen className="w-4 h-4 text-cyan-400" />
+                {edu.school}
+              </p>
+              <p className="flex items-center gap-2 text-sm text-gray-400">
+                <Calendar className="w-4 h-4" />
+                {edu.year}
+              </p>
+            </div>
 
-                <div className="space-y-3">
-                  <h4 className="text-sm font-semibold text-white flex items-center gap-2">
-                    <Trophy className="w-4 h-4 text-yellow-500" />
-                    Key Achievements
-                  </h4>
-                  <div className="flex flex-wrap gap-2">
-                    {edu.achievements.map((achievement, i) => (
-                      <div
-                        key={i}
-                        className="px-3 py-1 rounded-full bg-teal-500/10 text-teal-400 flex items-center gap-2 text-sm"
-                      >
-                        <Award className="w-4 h-4" />
-                        <span>{achievement}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
+            {/* Description */}
+            <p className="text-gray-300 text-sm leading-relaxed border-l-2 border-cyan-500/60 pl-4 mb-6">
+              {edu.description}
+            </p>
 
-                <div className="flex flex-wrap gap-2">
-                  {edu.skills.map((skill, i) => (
-                    <span
-                      key={i}
-                      className="px-2 py-1 text-xs rounded bg-blue-500/10 text-blue-300"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
+            {/* Achievements */}
+            <div className="mb-6">
+              <h4 className="text-sm font-semibold text-white flex items-center gap-2 mb-3">
+                <Trophy className="w-4 h-4 text-yellow-500" />
+                Key Achievements
+              </h4>
+              <div className="flex flex-wrap gap-2">
+                {edu.achievements.map((item, i) => (
+                  <span
+                    key={i}
+                    className="flex items-center gap-2 px-3 py-1 text-sm rounded-full bg-cyan-500/10 text-cyan-400"
+                  >
+                    <Award className="w-4 h-4" />
+                    {item}
+                  </span>
+                ))}
               </div>
-            </motion.div>
-          ))}
-        </motion.div>
-      </div>
+            </div>
+
+            {/* Skills */}
+            <div className="flex flex-wrap gap-2">
+              {edu.skills.map((skill, i) => (
+                <span
+                  key={i}
+                  className="px-2 py-1 text-xs rounded bg-blue-500/10 text-blue-300"
+                >
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </motion.article>
+        ))}
+      </motion.div>
     </section>
   );
 };

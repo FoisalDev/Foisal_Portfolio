@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import PropTypes from "prop-types";
+import { Github, ExternalLink } from "lucide-react";
 
 /* ================= PROJECT DATA ================= */
 
@@ -8,7 +9,7 @@ const projects = [
     title: "LawShield",
     tag: "Backend • Database",
     description:
-      "A law-focused management system built with PHP and MySQL, designed for secure legal record handling and structured data workflows.",
+      "A law-focused management system built with PHP and MySQL, designed for secure legal record handling.",
     image: "/projects/lawshield.jpg",
     github: "https://github.com/FoisalDev/LAW_SHEILD.git",
     live: "",
@@ -17,7 +18,7 @@ const projects = [
     title: "JobGate",
     tag: "Full Stack",
     description:
-      "A recruitment platform featuring candidate filtering, structured assessments, and role-based data access.",
+      "Recruitment platform with candidate filtering, assessments, and role-based access.",
     image: "/projects/jobgate.jpg",
     github: "https://github.com/FoisalDev/JobGate.git",
     live: "",
@@ -26,7 +27,7 @@ const projects = [
     title: "Personal Portfolio",
     tag: "Frontend",
     description:
-      "My personal portfolio website built with React and Tailwind CSS, focusing on performance, accessibility, and clean UI.",
+      "Personal portfolio built with React and Tailwind CSS, focused on performance and clean UI.",
     image: "/projects/portfolio.jpg",
     github: "https://github.com/FoisalDev/Foisal_Portfolio.git",
     live: "",
@@ -35,7 +36,7 @@ const projects = [
     title: "Bank Management System",
     tag: "Backend System",
     description:
-      "A banking system supporting authentication, account management, and transaction workflows with data validation.",
+      "Banking system supporting authentication, account handling, and transactions.",
     image: "/projects/bankmanagement.jpg",
     github: "https://github.com/FoisalDev/BankManagement.git",
     live: "",
@@ -44,7 +45,7 @@ const projects = [
     title: "UI / UX Design Works",
     tag: "Design",
     description:
-      "A collection of UI/UX design explorations created in Figma, focusing on layout systems and interaction clarity.",
+      "Collection of UI/UX works created in Figma, emphasizing layout systems and clarity.",
     image: "/projects/uiux-1.jpg",
     github: "https://github.com/FoisalDev/ui-ux.git",
     live: "",
@@ -53,7 +54,7 @@ const projects = [
     title: "Prototype Projects",
     tag: "Prototyping",
     description:
-      "Interactive prototypes demonstrating user flows, wireframes, and visual hierarchy using modern design principles.",
+      "Interactive prototypes demonstrating user flows and visual hierarchy.",
     image: "/projects/prototype-1.jpg",
     github: "https://github.com/FoisalDev/Prototype.git",
     live: "",
@@ -64,9 +65,7 @@ const projects = [
 
 const gridVariants = {
   hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.1 },
-  },
+  visible: { transition: { staggerChildren: 0.12 } },
 };
 
 const cardVariants = {
@@ -74,7 +73,7 @@ const cardVariants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5, ease: "easeOut" },
+    transition: { duration: 0.6, ease: "easeOut" },
   },
 };
 
@@ -82,16 +81,23 @@ const cardVariants = {
 
 export default function Projects() {
   return (
-    <section className="min-h-screen bg-black text-white pt-32 pb-28 px-6">
+    <section className="min-h-screen relative overflow-hidden pt-32 pb-28 px-6 bg-[#04081A] text-white">
+      
+      {/* Grid background (same as Experience) */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(50,50,70,0.15)_1px,transparent_1px),linear-gradient(90deg,rgba(50,50,70,0.15)_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,#000_70%,transparent_100%)]" />
+
+      {/* Glow blobs */}
+      <div className="absolute top-24 left-20 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl animate-pulse" />
+      <div className="absolute bottom-24 right-20 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
+
       {/* Header */}
-      <div className="max-w-6xl mx-auto mb-24 text-center">
-        <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
+      <div className="relative max-w-6xl mx-auto mb-24 text-center">
+        <h1 className="text-4xl md:text-6xl font-black text-transparent bg-gradient-to-r from-teal-400 to-blue-500 bg-clip-text">
           Selected Projects
         </h1>
         <p className="mt-6 text-gray-400 max-w-2xl mx-auto text-lg">
-          A curated selection of academic, personal, and professional projects
-          demonstrating my experience in system design, full-stack development,
-          and UI/UX.
+          A curated selection of projects demonstrating real-world development
+          experience and system design skills.
         </p>
       </div>
 
@@ -101,7 +107,7 @@ export default function Projects() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-80px" }}
-        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 max-w-7xl mx-auto"
+        className="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 max-w-7xl mx-auto"
       >
         {projects.map((project, index) => (
           <ProjectCard key={index} project={project} />
@@ -118,9 +124,9 @@ function ProjectCard({ project }) {
     <motion.article
       variants={cardVariants}
       whileHover={{ y: -6 }}
-      className="group bg-zinc-900/90 rounded-2xl overflow-hidden border border-white/10 shadow-lg transition-all"
+      className="group bg-gray-900/90 rounded-2xl overflow-hidden border border-white/10 shadow-xl backdrop-blur-xl transition-all"
     >
-      {/* Image */}
+      {/* Image + GitHub Overlay */}
       <div className="relative h-56 overflow-hidden">
         <img
           src={project.image}
@@ -128,12 +134,27 @@ function ProjectCard({ project }) {
           loading="lazy"
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
         />
-        <div className="absolute inset-0 bg-black/20" />
+
+        {/* Hover overlay */}
+        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+        {/* GitHub Icon */}
+        {project.github && (
+          <a
+            href={project.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="absolute top-4 right-4 z-10 p-2 rounded-full bg-black/60 backdrop-blur-md text-white opacity-90 hover:opacity-100 hover:scale-110 transition-all"
+            aria-label="View source code on GitHub"
+          >
+            <Github size={22} />
+          </a>
+        )}
       </div>
 
       {/* Content */}
       <div className="p-6 flex flex-col h-full">
-        <span className="text-xs uppercase tracking-wider text-gray-400 mb-2">
+        <span className="text-xs uppercase tracking-wider text-cyan-400 mb-2">
           {project.tag}
         </span>
 
@@ -145,16 +166,17 @@ function ProjectCard({ project }) {
           {project.description}
         </p>
 
-        {/* Actions */}
-        <div className="mt-auto flex items-center gap-5 text-sm font-medium">
+        {/* Footer actions */}
+        <div className="mt-auto flex items-center gap-6 text-sm font-medium">
           {project.github && (
             <a
               href={project.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue-400 hover:text-blue-300 transition-colors"
+              className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors"
             >
-              View Code →
+              <Github size={16} />
+              View Code
             </a>
           )}
 
@@ -163,9 +185,10 @@ function ProjectCard({ project }) {
               href={project.live}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue-400 hover:text-blue-300 transition-colors"
+              className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors"
             >
-              Live Demo →
+              <ExternalLink size={16} />
+              Live Demo
             </a>
           )}
         </div>
