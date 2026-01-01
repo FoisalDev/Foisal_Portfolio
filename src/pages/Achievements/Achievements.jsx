@@ -10,7 +10,8 @@ import meImg from "../../assets/achievements/me.jpg";
 import htmlCert from "../../assets/achievements/html-cert.jpg";
 import cssCert from "../../assets/achievements/css-cert.jpg";
 import javaCert from "../../assets/achievements/java-cert.jpg";
-
+import CCert from "../../assets/achievements/C-cert.jpg";
+import CppCert from "../../assets/achievements/cpp-cert.png";
 /* ================= ANIMATION ================= */
 
 const containerVariants = {
@@ -34,7 +35,6 @@ const fadeUp = {
 export default function Achievements() {
   return (
     <section className="min-h-screen relative overflow-hidden pt-32 pb-28 px-6 bg-[#04081A] text-white">
-      
       {/* Grid background (same as Experience / Projects / Education) */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(50,50,70,0.15)_1px,transparent_1px),linear-gradient(90deg,rgba(50,50,70,0.15)_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,#000_70%,transparent_100%)]" />
 
@@ -59,7 +59,6 @@ export default function Achievements() {
 
         {/* Trophy + Text */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          
           {/* Trophy */}
           <motion.img
             variants={fadeUp}
@@ -94,7 +93,6 @@ export default function Achievements() {
 
         {/* Supporting Images */}
         <div className="mt-20 space-y-12">
-          
           {/* Certificate + Team */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             <motion.img
@@ -160,6 +158,16 @@ export default function Achievements() {
               img: javaCert,
               title: "Introduction to Java",
               org: "SoloLearn • 2025",
+            },
+            {
+              img: CppCert,
+              title: "Introduction to C++",
+              org: "SoloLearn • 2025",
+            },
+            {
+              img: CCert,
+              title: "Introduction to C",
+              org: "SoloLearn • 2026",
             },
           ].map((cert, i) => (
             <motion.div
