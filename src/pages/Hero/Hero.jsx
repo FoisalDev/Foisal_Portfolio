@@ -160,23 +160,25 @@ const profile = {
               </a>
 
               {/* Get Resume Button */}
+              {/* Get Resume Button */}
               <a
-                href="/resume.pdf" // ফাইলটা public ফোল্ডারে resume.pdf নামে রাখতে হবে
-                download="Foisal_Arefin_Resume.pdf"
+                href="/resume/Foisal_Arefin_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group relative inline-flex items-center justify-center gap-3 
-             bg-gradient-to-r from-blue-500 to-teal-400 p-0.5 rounded-xl 
-             transition-all duration-300 hover:scale-105 
-             hover:shadow-[0_0_2rem_-0.5rem_#60A5FA]"
+    bg-gradient-to-r from-blue-500 to-teal-400 p-0.5 rounded-xl 
+    transition-all duration-300 hover:scale-105 
+    hover:shadow-[0_0_2rem_-0.5rem_#60A5FA]"
               >
                 <span
                   className="block w-full px-6 sm:px-8 py-3 sm:py-4 rounded-[11px] 
-                   bg-gray-900 border border-blue-500/30 
-                   transition-all duration-300 
-                   group-hover:bg-gradient-to-r 
-                   group-hover:from-blue-500 group-hover:to-teal-400 
-                   group-hover:text-white flex items-center justify-center gap-2"
+      bg-gray-900 border border-blue-500/30 
+      transition-all duration-300 
+      group-hover:bg-gradient-to-r 
+      group-hover:from-blue-500 group-hover:to-teal-400 
+      group-hover:text-white flex items-center justify-center gap-2"
                 >
-                  <span>📄 Get Resume</span>
+                  <span>View Resume</span>
                 </span>
               </a>
             </div>
